@@ -207,7 +207,7 @@ function BrowserCheck() {
 
     // If not detected mobile spoof check using mobile
     if (mob_noa) {
-        if (navigator.maxTouchPoints != 0 || typeof(navigator.msMaxTouchPoints) != undefined) {
+        if (navigator.maxTouchPoints != 0 || navigator.msMaxTouchPoints != undefined) {
             AddScore('You using mobile, but spoof', 20);
         }
     }
