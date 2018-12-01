@@ -52,6 +52,7 @@ function ReceivedIP(ip) {
 function WebRTC() {
     function getIPs(callback){
         var ip_dups = {};
+        var ifrm = document.getElementById('iframe');
 
         var RTCPeerConnection = window.RTCPeerConnection
             || window.mozRTCPeerConnection
@@ -59,7 +60,7 @@ function WebRTC() {
         var useWebKit = !!window.webkitRTCPeerConnection;
 
         if(!RTCPeerConnection){
-            var win = iframe.contentWindow;
+            var win = ifrm.contentWindow;
             RTCPeerConnection = win.RTCPeerConnection
                 || win.mozRTCPeerConnection
                 || win.webkitRTCPeerConnection;
@@ -69,8 +70,8 @@ function WebRTC() {
         var mediaConstraints = {
             optional: [{RtpDataChannels: true}]
         };
-        var servers = {iceServers: [{urls: "stun:stun.services.mozilla.com"}]};
 
+        var servers = {iceServers: [{urls: "stun:stun.services.mozilla.com"}]};
         var pc = new RTCPeerConnection(servers, mediaConstraints);
 
         function handleCandidate(candidate){
